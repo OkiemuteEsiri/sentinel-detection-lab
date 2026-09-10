@@ -1,0 +1,8 @@
+// Microsoft Sentinel / Defender-style defensive analytic
+// ATT&CK: T1059.001 PowerShell
+DeviceProcessEvents
+| where Timestamp > ago(1h)
+| where FileName =~ "powershell.exe" or FileName =~ "pwsh.exe"
+| where ProcessCommandLine has_any ("-enc", "-encodedcommand", "FromBase64String")
+| extend SuspicionScore = 70
+| project Timestamp, DeviceName, AccountName, FileName, ProcessCommandLine, SHA1, InitiatingProcessFileName, SuspicionScore
