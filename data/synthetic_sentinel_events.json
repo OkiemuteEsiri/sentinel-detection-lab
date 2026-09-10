@@ -1,0 +1,8 @@
+[
+  {"event_id":"EVT-001","timestamp":"2026-09-01T09:00:00Z","event_type":"signin","user":"admin@example.test","host":"AZURE-PORTAL","source_ip":"203.0.113.10","action":"interactive_signin","result":"success","details":{"privileged":true,"mfa":false,"remote":false}},
+  {"event_id":"EVT-002","timestamp":"2026-09-01T09:05:00Z","event_type":"process","user":"analyst@example.test","host":"WS-101","source_ip":"198.51.100.20","action":"powershell.exe","result":"success","details":{"command_line":"powershell.exe -EncodedCommand SYNTHETIC_PLACEHOLDER"}},
+  {"event_id":"EVT-003","timestamp":"2026-09-01T09:10:00Z","event_type":"signin","user":"svc-admin@example.test","host":"SRV-01","source_ip":"198.51.100.50","action":"remote_logon","result":"success","details":{"privileged":true,"mfa":true,"remote":true}},
+  {"event_id":"EVT-004","timestamp":"2026-09-01T09:11:00Z","event_type":"signin","user":"svc-admin@example.test","host":"SRV-02","source_ip":"198.51.100.50","action":"remote_logon","result":"success","details":{"privileged":true,"mfa":true,"remote":true}},
+  {"event_id":"EVT-005","timestamp":"2026-09-01T09:12:00Z","event_type":"signin","user":"svc-admin@example.test","host":"SRV-03","source_ip":"198.51.100.50","action":"remote_logon","result":"success","details":{"privileged":true,"mfa":true,"remote":true}},
+  {"event_id":"EVT-006","timestamp":"2026-09-01T09:20:00Z","event_type":"audit","user":"operator@example.test","host":"SENTINEL","source_ip":"192.0.2.44","action":"disable_diagnostic_setting","result":"success","details":{"resource":"synthetic-workspace"}}
+]
