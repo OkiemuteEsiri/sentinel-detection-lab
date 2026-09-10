@@ -1,0 +1,7 @@
+// Defensive analytic for endpoint protection impairment
+// ATT&CK: T1562.001 Impair Defenses
+DeviceEvents
+| where Timestamp > ago(1h)
+| where ActionType has_any ("TamperingAttempt", "AntivirusDisabled", "RealTimeProtectionDisabled")
+| extend SuspicionScore = 85
+| project Timestamp, DeviceName, AccountName, ActionType, InitiatingProcessFileName, InitiatingProcessCommandLine, SuspicionScore
