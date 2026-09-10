@@ -1,0 +1,9 @@
+// Defensive analytic for unusual remote-logon breadth
+// ATT&CK: T1021 Remote Services, T1078 Valid Accounts
+DeviceLogonEvents
+| where Timestamp > ago(1h)
+| where LogonType in ("RemoteInteractive", "Network")
+| summarize TargetDevices=dcount(DeviceName), Devices=make_set(DeviceName, 25), Attempts=count() by AccountName, RemoteIP
+| where TargetDevices >= 5
+| extend SuspicionScore = case(TargetDevices >= 12, 90, TargetDevices >= 8, 80, 70)
+| project AccountName, RemoteIP, TargetDevices, Attempts, Devices, SuspicionScore
